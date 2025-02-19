@@ -5,7 +5,7 @@ echo "Build script"
 # Step 1: Install frontend dependencies
 echo "Installing frontend dependencies..."
 cd frontend
-npm install
+npm ci
 if [ $? -ne 0 ]; then
   echo "Error: Installing frontend dependencies...failed"
   exit 1
