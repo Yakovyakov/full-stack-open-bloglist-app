@@ -1,0 +1,15 @@
+{
+    "name": "bloglist-app",
+    "version": "0.0.0",
+    "scripts": {
+      "dev:frontend": "cd frontend && npm run dev",
+      "test:frontend": "cd frontend && npm run test",
+      "build:frontend": "cd frontend && npm run build",
+      "dev:backend": "cd backend && npm run dev",
+      "test:backend": "cd backend && npm run test",
+      "start:backend": "cd backend && npm run start",
+      "copy-dist": "cp -fr frontend/dist backend/public",
+      "build": "npm run build:frontend && npm run copy-dist",
+      "start": "npm run build && npm run start:backend"
+    }
+}
