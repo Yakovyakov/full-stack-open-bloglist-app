@@ -8,6 +8,7 @@
       "dev:backend": "cd backend && npm run dev",
       "test:backend": "cd backend && npm run test",
       "start:backend": "cd backend && npm run start",
+      "start:backend:prod": "cd backend && npm run start-prod",
       "copy-dist": "cp -fr frontend/dist backend/",
       "build": "npm run build:frontend && npm run copy-dist",
       "start": "npm run build && npm run start:backend"
