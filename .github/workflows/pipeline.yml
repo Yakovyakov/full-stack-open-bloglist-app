@@ -35,6 +35,7 @@ jobs:
         run: echo "Set up enviroment ok "
       - name: test
         run: |
+          echo "Running tests with MongoDB URI: $TEST_MONGODB_URI"
           echo "LAST_STEP=Test" >> $GITHUB_ENV
           npm run test
 #      - name: e2e tests, Install Playwright Browsers
