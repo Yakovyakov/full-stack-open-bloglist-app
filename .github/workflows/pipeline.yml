@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies 
         run: |
           echo "LAST_STEP=Install_dependencies" >> $GITHUB_ENV
-          bash scripts/build_steps.sh 
+          bash scripts/github_actions_build_steps.sh 
 
       - name: Check style
         run: | 
