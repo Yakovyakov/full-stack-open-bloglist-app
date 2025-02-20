@@ -31,10 +31,11 @@ jobs:
 
       - name: test
         run: |
-          echo "TEST_MONGODB_URI=${{ secrets.TEST_MONGODB_URI }}" >> $GITHUB_ENV
-          echo "Running tests with MongoDB URI: $TEST_MONGODB_URI"
+          echo "Running tests with MongoDB URI $TEST_MONGODB_URI"
           echo "LAST_STEP=Test" >> $GITHUB_ENV
           npm run test
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }} 
 #      - name: e2e tests, Install Playwright Browsers
 #        run: |
 #          echo "LAST_STEP=Test_e2e" >> $GITHUB_ENV
