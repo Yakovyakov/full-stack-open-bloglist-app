@@ -31,7 +31,8 @@ jobs:
 
       - name: Set up environment variables
         env:
-          TEST_MONGO_DB_URI: ${{ secrets.TEST_MONGODB_URI }} 
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+        run: echo "Set up enviroment ok "
       - name: test
         run: |
           echo "LAST_STEP=Test" >> $GITHUB_ENV
