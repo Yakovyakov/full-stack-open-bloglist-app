@@ -29,6 +29,9 @@ jobs:
           echo "LAST_STEP=Build" >> $GITHUB_ENV
           npm run build
 
+      - name: Set up environment variables
+        env:
+          TEST_MONGO_DB_URI: ${{ secrets.TEST_MONGODB_URI }} 
       - name: test
         run: |
           echo "LAST_STEP=Test" >> $GITHUB_ENV
