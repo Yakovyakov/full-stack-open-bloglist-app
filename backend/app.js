@@ -28,7 +28,7 @@ app.use(cors())
 app.use(express.static('dist'))
 app.use(express.json())
 app.use(middleware.requestLogger)
-
+//code for testing pipeline
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)
