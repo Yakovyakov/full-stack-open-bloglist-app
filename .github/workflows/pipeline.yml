@@ -35,7 +35,8 @@ jobs:
           echo "LAST_STEP=Test" >> $GITHUB_ENV
           npm run test
         env:
-          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }} 
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          SECRET: ${{ secrets.SECRET }}
 #      - name: e2e tests, Install Playwright Browsers
 #        run: |
 #          echo "LAST_STEP=Test_e2e" >> $GITHUB_ENV
