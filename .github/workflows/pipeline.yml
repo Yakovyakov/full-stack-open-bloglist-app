@@ -29,12 +29,9 @@ jobs:
           echo "LAST_STEP=Build" >> $GITHUB_ENV
           npm run build
 
-      - name: Set up environment variables
-        env:
-          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
-        run: echo "Set up enviroment ok MongoDB URI: $TEST_MONGODB_URI"
       - name: test
         run: |
+          echo "TEST_MONGODB_URI=${{ secrets.TEST_MONGODB_URI }}" >> $GITHUB_ENV
           echo "Running tests with MongoDB URI: $TEST_MONGODB_URI"
           echo "LAST_STEP=Test" >> $GITHUB_ENV
           npm run test
