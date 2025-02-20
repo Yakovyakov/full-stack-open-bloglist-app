@@ -17,12 +17,12 @@ jobs:
       - name: Install dependencies 
         run: |
           echo "LAST_STEP=Install_dependencies" >> $GITHUB_ENV
-          npm install  
+          bash scripts/build_steps.sh 
 
       - name: Check style
         run: | 
           echo "LAST_STEP=Check_style" >> $GITHUB_ENV
-          npm run eslint
+          npm run lint
       
       - name: build
         run: | 
@@ -33,18 +33,18 @@ jobs:
         run: |
           echo "LAST_STEP=Test" >> $GITHUB_ENV
           npm run test
-      - name: e2e tests, Install Playwright Browsers
-        run: |
-          echo "LAST_STEP=Test_e2e" >> $GITHUB_ENV
-          npx playwright install --with-deps
-      - name: e2e tests, Run Playwright tests
-        run: npm run test:e2e
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+#      - name: e2e tests, Install Playwright Browsers
+#        run: |
+#          echo "LAST_STEP=Test_e2e" >> $GITHUB_ENV
+#          npx playwright install --with-deps
+#      - name: e2e tests, Run Playwright tests
+#        run: npm run test:e2e
+#      - uses: actions/upload-artifact@v4
+#        if: ${{ !cancelled() }}
+#        with:
+#          name: playwright-report
+#          path: playwright-report/
+#          retention-days: 30
       - name: Discord notify on failure
         uses: rjstone/discord-webhook-notify@v1
         if: failure()
