@@ -53,6 +53,6 @@ export default [
     },
   },
   { 
-    ignores: ["dist/**", "build/**"],
+    ignores: ["dist/**", "build/**", "tests-examples"],
   },
 ];
