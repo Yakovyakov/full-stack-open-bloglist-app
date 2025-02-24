@@ -1,5 +1,5 @@
 const healthRouter = require('express').Router()
-const packageJson = require('../../package.json')
+const packageJson = require('../package.json')
 
 
 healthRouter.get('/', async (request, response) => {

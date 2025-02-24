@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo "Build script"
+#Step 0: Update version from tag version Github
+./update_version_tag.sh
 
 # Step 1: Install frontend dependencies
 echo "Installing frontend dependencies..."
