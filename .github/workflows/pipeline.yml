@@ -86,7 +86,7 @@ jobs:
         if: success()
         with:
           severity: info
-          text: A new version of Pokedex deployed
+          text: A new version of BloglistApp deployed
           description: "to ${{ secrets.URL_APP_RENDER}} by ${{ github.event.head_commit.author.name }}"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Discord notify on failure
