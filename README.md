@@ -1,4 +1,4 @@
-# Application bloglist-app for for part 11 (CI/CD) of the full stack open course
+# Application bloglist-app for for the CI/CD module of the Full stack open course
 
 Link to the deployed application on render:
 
@@ -41,9 +41,22 @@ Folders and files overview
 
 Start by running `npm install` inside the backend and frontend folders
 
-- `npm start` to run the webpack dev server
-- `npm test` to run tests (backend and frontend)
-- `npm test:e2e` to run end to end tests 
+### General commands
+
+- `npm run test` to run tests (backend and frontend)
+- `npm run "test:e2e"` to run end to end tests
 - `npm run lint` to run eslint (backend and frontend)
 - `npm run build` to make a production build
 - `npm run start-prod` to run your production build
+
+### Backend commands
+
+- `npm run "test:backend"` to run tests on the backend
+- `npm run "dev:backend"` to run backend in develoment mode
+- `npm run "lint:backend"` to run eslint on the backend
+
+### Frontend commands
+
+- `npm run "test:frontend"` to run tests on the frontend
+- `npm run "dev:frontend"` to run frontend in develoment mode
+- `npm run "lint:frontend"` to run eslint on the frontend
