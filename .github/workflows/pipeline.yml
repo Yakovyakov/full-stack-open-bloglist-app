@@ -72,30 +72,27 @@ jobs:
         uses: anothrNick/github-tag-action@1.71.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Update version in package.json(./package.json, frontend/package.json and backend/package.json)
-        run: |
-          NEW_VERSION=${{ steps.bump_version.outputs.new_tag }}
-          NEW_VERSION=${NEW_VERSION#v}
-          # update verion /package.json
-          npm version $NEW_VERSION --no-git-tag-version --prefix ./
-
-          # update version /frontend/package.json
-          npm version $NEW_VERSION --no-git-tag-version --prefix ./frontend
-
-          # update version /backend/package.json
-          npm version $NEW_VERSION --no-git-tag-version --prefix ./backend
-
-          echo "update version in all package.json: $NEW_VERSION"
-          
-      - name: Commit and push changes
+      - name: Create new branch and push changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add package.json
+          git checkout -b bump-version-${{ steps.bump_version.outputs.new_tag }}
+          git add package.json frontend/package.json backend/package.json
           git commit -m "Bump version to ${{ steps.bump_version.outputs.new_tag }} [skip ci]"
-          git push origin main
+          git push origin bump-version-${{ steps.bump_version.outputs.new_tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.PERSONAL_TOKEN }}  
+          title: "Bump version to ${{ steps.bump_version.outputs.new_tag }}"
+          body: "Automated version bump to ${{ steps.bump_version.outputs.new_tag }}"
+          branch: "bump-version-${{ steps.bump_version.outputs.new_tag }}"
+          base: main
+          draft: false
+          delete-branch: true
       - name: Trigger deployment
         run: |
           response=$(curl -o /dev/null -w "%{http_code}" "https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}")
