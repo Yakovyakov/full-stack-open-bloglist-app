@@ -4,6 +4,8 @@ Link to the deployed application on render:
 
 <https://full-stack-open-bloglist-app.onrender.com>
 
+**Note:** Initial users are "root", "hellas" and "mluukkai" all have the password "sekret".
+
 ## General structure of the repository
 
 ```tree
